@@ -25,6 +25,15 @@ const TodoItem = ({ todo }: TodoItemProps) => {
       >
         <div>
           <div className="flex flex-row w-full justify-between items-center">
+            <button onClick={() => toggleTodo(todo.id)} className="pr-4 h-full">
+              {todo.completed ? (
+                <div className="bg-black h-6 w-6 rounded-full flex items-center justify-center">
+                  <CheckIcon className="h-4 w-4 text-white " />
+                </div>
+              ) : (
+                <CircleIcon className="h-6 w-6" />
+              )}
+            </button>
             <div className="w-full">
               <p
                 className={classNames(
