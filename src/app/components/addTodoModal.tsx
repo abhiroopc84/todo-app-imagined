@@ -8,8 +8,21 @@ const AddTodoModal: React.FC = () => {
   const [description, setDescription] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const addTodo = useTodoStore((state) => state.addTodo);
+
   const handleSubmit = () => {
+    if (text) {
+      addTodo({
+        text,
+        description,
+        completed: false,
+        date: new Date().toISOString().split("T")[0],
+      });
+      setText("");
+      setDescription("");
+      setIsOpen(false);
+    }
   };
+
   return (
     <>
       <button
