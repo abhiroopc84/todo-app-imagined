@@ -10,9 +10,10 @@ import {
 
 interface TodoItemProps {
   todo: Todo;
+  onEditClick: (todo: Todo) => void;
 }
 
-const TodoItem = ({ todo }: TodoItemProps) => {
+const TodoItem = ({ todo, onEditClick }: TodoItemProps) => {
   const { toggleTodo, deleteTodo } = useTodoStore();
 
   return (
@@ -50,6 +51,18 @@ const TodoItem = ({ todo }: TodoItemProps) => {
           <p className="text-sm text-gray-700 pl-[40px] font-serif break-all">
             {todo.description}
           </p>
+        </div>
+        <div className="flex flex-col gap-4 pl-4">
+          <button
+            onClick={() => onEditClick(todo)}
+            disabled={todo.completed}
+            className="disabled:text-gray-500"
+          >
+            <Pencil1Icon className="h-5 w-5" />
+          </button>
+          <button onClick={() => deleteTodo(todo.id)} className="text-red-500">
+            <TrashIcon className="h-6 w-6" />
+          </button>
         </div>
       </div>
     </>
