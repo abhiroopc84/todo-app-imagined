@@ -53,9 +53,13 @@ export default function Home() {
       >
         <div className="flex flex-col gap-4">
           <h1 className="text-xl font-bold pt-2">{getDateLabel()}</h1>
-          {filteredTodos.map((todo) => (
-            <TodoItem key={todo.id} todo={todo} onEditClick={openEditModal} />
-          ))}
+          {filteredTodos.length === 0 ? (
+            <p>No To-dos.</p>
+          ) : (
+            filteredTodos.map((todo) => (
+              <TodoItem key={todo.id} todo={todo} onEditClick={openEditModal} />
+            ))
+          )}
         </div>
       </section>
       <AddTodoModal />
