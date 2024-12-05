@@ -37,11 +37,17 @@ const Header = () => {
             onClick={() => handleDayClick(date)}
             className={classNames(
               "flex flex-col items-center p-3 w-full rounded-xl",
+              format(date, "yyyy-MM-dd") ===
+                format(selectedDate, "yyyy-MM-dd") && "bg-black text-white"
             )}
           >
             <span
               className={classNames(
                 "text-xs font-semibold",
+                format(date, "yyyy-MM-dd") ===
+                  format(selectedDate, "yyyy-MM-dd")
+                  ? "bg-black text-white"
+                  : "text-gray-400"
               )}
             >
               {daysOfWeek[index][0]}
