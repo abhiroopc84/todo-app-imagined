@@ -41,7 +41,7 @@ const EditTodoModal = ({
           className="w-full p-2 border rounded-md"
         />
         <textarea
-          placeholder="Task description (optional)"
+          placeholder="Task description"
           value={newDescription}
           onChange={(e) => setNewDescription(e.target.value)}
           className="w-full p-2 border rounded-md"
