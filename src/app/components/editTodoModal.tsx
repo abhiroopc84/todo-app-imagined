@@ -31,7 +31,7 @@ const EditTodoModal = ({
 
   return (
     <div className="fixed z-50 inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-white p-4 rounded-lg shadow-2xl shadow-gray-500 flex flex-col gap-4 w-full">
+      <div className="bg-white p-4 rounded-lg shadow-2xl shadow-gray-500 flex flex-col gap-4 w-full max-w-96">
         <h2 className="text-lg font-bold">Edit To-Do</h2>
         <input
           type="text"
