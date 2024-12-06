@@ -7,6 +7,8 @@ import {
   Pencil1Icon,
   TrashIcon,
 } from "@radix-ui/react-icons";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 interface TodoItemProps {
   todo: Todo;
@@ -15,6 +17,14 @@ interface TodoItemProps {
 
 const TodoItem = ({ todo, onEditClick }: TodoItemProps) => {
   const { toggleTodo, deleteTodo } = useTodoStore();
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id: todo.id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    touchAction: "none",
+  };
 
   return (
     <>
@@ -23,8 +33,11 @@ const TodoItem = ({ todo, onEditClick }: TodoItemProps) => {
           "p-4 rounded-xl flex flex-row items-center justify-between shadow-2xl shadow-gray-300",
           { "bg-gray-100": todo.completed, "bg-white": !todo.completed }
         )}
+        ref={setNodeRef}
+        style={style}
+        {...attributes}
       >
-        <div>
+        <div className="flex flex-col w-full">
           <div className="flex flex-row w-full justify-between items-center">
             <button onClick={() => toggleTodo(todo.id)} className="pr-4 h-full">
               {todo.completed ? (
@@ -35,7 +48,7 @@ const TodoItem = ({ todo, onEditClick }: TodoItemProps) => {
                 <CircleIcon className="h-6 w-6" />
               )}
             </button>
-            <div className="w-full">
+            <div className="w-full" {...listeners}>
               <p
                 className={classNames(
                   "font-bold text-xl font-serif break-all",
@@ -48,7 +61,7 @@ const TodoItem = ({ todo, onEditClick }: TodoItemProps) => {
               </p>
             </div>
           </div>
-          <p className="text-sm text-gray-700 pl-[40px] font-serif break-all">
+          <p className="text-sm text-gray-700 pl-[40px] font-serif break-all" {...listeners}>
             {todo.description}
           </p>
         </div>

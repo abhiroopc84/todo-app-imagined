@@ -15,6 +15,7 @@ interface TodoStore {
   toggleTodo: (id: string) => void;
   editTodo: (id: string, updated: Partial<Todo>) => void;
   deleteTodo: (id: string) => void;
+  setTodos: (todos: Todo[]) => void;
 }
 
 export const useTodoStore = create<TodoStore>()(
@@ -41,6 +42,7 @@ export const useTodoStore = create<TodoStore>()(
         set((state) => ({
           todos: state.todos.filter((todo) => todo.id !== id),
         })),
+      setTodos: (todos) => set({ todos }),
     }),
     { name: "todo-storage" }
   )
