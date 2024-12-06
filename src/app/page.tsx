@@ -75,7 +75,7 @@ export default function Home() {
     <main className="h-dvh w-dvw font-sans flex flex-col justify-between">
       <Header />
       <section
-        className="pt-[166px] px-4 pb-24 overflow-y-scroll"
+        className="pt-[166px] px-4 pb-24 overflow-y-scroll h-full"
         style={{
           mask: "linear-gradient(to bottom, rgba(0,0,0, 1) 0, rgba(0,0,0, 1) 85%, rgba(0,0,0, 0) 90%, rgba(0,0,0, 0) 0) 100% 50% / 100% 100% repeat-x",
         }}
